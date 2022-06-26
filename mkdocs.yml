@@ -1,5 +1,5 @@
 # Project information
-site_name: REPO_NAME_OR_SITE_NAME
+site_name: DVC-NLP-Project
 # defeine TOC or order of website-
 nav:
   - Home: index.md
@@ -9,8 +9,8 @@ site_description: >-
   DESCRIPTION
 
 # Repository
-repo_name: GOURAVRISHI/REPO_NAME
-repo_url: https://github.com/GOURAVRISHI/REPO_NAME
+repo_name: GOURAVRISHI/DVC-NLP-Project
+repo_url: https://github.com/GOURAVRISHI/DVC-NLP-Project
 
 # Configuration
 theme:
