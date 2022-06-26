@@ -16,5 +16,14 @@ def process_posts(fd_in, fd_out_train, fd_out_test, target_tag, split):
             pid = attr.get('Id', "")
             label= 1 if target_tag in attr.get("Tags", "") else 0   # tags if python =1 else =0
             title = re.sub(r"\s+", " " ,attr.get("Title", "")).strip()  # remove extra spaces from front and back of title, and re.sub- remove extra space from b/w text
+            body = re.sub(r"\s+", " " ,attr.get("Body", "")).strip()
+            text= f"{title} {body}"  # title +" "+ body
+
+            fd_out.write(f"{pid}\t{label}\t{text}\n") # seperated all by tab pid, label, text 
+            line_num +=1    # next line
+
+        except Exception as e:
+            msg = f"Skipping the broken line {line_num}: {e}\n"
+            logging.exception(msg)
 
             # This is an   NLP 
