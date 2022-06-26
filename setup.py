@@ -24,5 +24,3 @@ setup(
     python_requires=">=3.6",
     install_requires=LIST_OF_REQUIREMENTS
 )
-
-Gourav Rishi
