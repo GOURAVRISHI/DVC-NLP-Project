@@ -41,11 +41,11 @@ extra:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/GOURAVRISHI
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/
+      link: https://twitter.com
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/gouravrishi/
     - icon: fontawesome/brands/instagram
-      link: https://www.instagram.com/
+      link: https://www.instagram.com
 
 extra_javascript:
   - javascripts/mathjax.js
