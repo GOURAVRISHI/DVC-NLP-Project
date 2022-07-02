@@ -32,3 +32,5 @@ dvc init
 ```
 
 ### STEP 06- commit and push the changes to the remote repository
+
+# to check mkdocs use : mkdocs serve

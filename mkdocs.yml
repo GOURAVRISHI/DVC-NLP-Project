@@ -4,6 +4,7 @@ site_name: DVC-NLP-Project
 nav:
   - Home: index.md
   - Data-prep-stage: data_prep.md
+  - Featurization: featurization.md
 
 site_author: Gourav Rishi
 site_description: >-
