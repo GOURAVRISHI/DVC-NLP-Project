@@ -52,6 +52,7 @@ def main(config_path, params_path):
     tfid= TfidfTransformer(smooth_idf= False)
     tfid.fit(train_words_binary_matrix)
     train_words_tfidf_matrix = tfid.transform(train_words_binary_matrix)
+    # call a function to save this matrix
 
     # for test data 
     df_test = get_df(test_data_path)
@@ -59,7 +60,7 @@ def main(config_path, params_path):
     test_words_binary_matrix = bag_of_words.transform(test_words)
     test_words_tfidf_matrix = tfid.transform(test_words_binary_matrix)
     # call a function to save this matrix
-    
+
 
 if __name__ == '__main__':
     args = argparse.ArgumentParser()
