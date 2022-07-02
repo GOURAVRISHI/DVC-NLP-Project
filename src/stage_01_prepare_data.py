@@ -1,7 +1,5 @@
 import argparse
 import os
-import shutil
-from tqdm import tqdm
 import logging
 from src.utils import read_yaml, create_directories, process_posts
 import random
