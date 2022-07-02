@@ -139,13 +139,5 @@ configs/secrets.yaml
 
 # add your env folder here if its there
 
-
-
-artifacts/prepared/test.tsv
-artifacts/prepared/train.tsv
-
-artifacts/features/test.pkl
-artifacts/features/train.pkl
-
-test.tsv
-train.tsv
+/prepared
+/features
