@@ -10,7 +10,7 @@ stages:
       md5: 0fb43c7f4f9018b69f9f31c54a1f8a23
       size: 2229
     - path: src/utils
-      md5: 9f177c662daa8eb9853349675819328d.dir
+      md5: eafd42bf6bdbf59daac33ed32def6db5.dir
       size: 9093
       nfiles: 9
     outs:
@@ -29,7 +29,7 @@ stages:
       md5: e0b208949d523f376c550e5db13efb30
       size: 3266
     - path: src/utils
-      md5: 9f177c662daa8eb9853349675819328d.dir
+      md5: eafd42bf6bdbf59daac33ed32def6db5.dir
       size: 9093
       nfiles: 9
     outs:
@@ -37,3 +37,21 @@ stages:
       md5: 2638a56d12c43583c71dc6f020a45b54.dir
       size: 12272480
       nfiles: 2
+  train:
+    cmd: python src/stage_03_train.py
+    deps:
+    - path: artifacts/features
+      md5: 2638a56d12c43583c71dc6f020a45b54.dir
+      size: 12272480
+      nfiles: 2
+    - path: src/stage_03_train.py
+      md5: 77e0d974077c093b1dc633e3508363b4
+      size: 2515
+    - path: src/utils
+      md5: eafd42bf6bdbf59daac33ed32def6db5.dir
+      size: 9093
+      nfiles: 9
+    outs:
+    - path: artifacts/model/model.pkl
+      md5: 600f3ade64d84e757c4914a03f964fae
+      size: 1718852
