@@ -41,15 +41,18 @@ def main(config_path, params_path):
     labels = np.squeeze(matrix[:, 1].toarray())
     X= matrix[:,2:]
 
-    predictions = model.predict(X)
+    predictions_probabilities = model.predict_proba(X)
+    pred = predictions_probabilities[:, 1] # considering only 1 +ve class
     
+    logging.info(f"labels, predictions: {list(zip(labels, pred))}")
     PRC_json_path = config["plots"]["PRC"]
     ROC_json_path = config["plots"]["ROC"]
     scores_json_path = config["metrics"]["SCORES"]
 
-    avg_prec= metrics.average_precision_score(labels, predictions)
-    roc_auc = metrics.roc_auc_score(labels, predictions)
+    avg_prec= metrics.average_precision_score(labels, pred)
+    roc_auc = metrics.roc_auc_score(labels, pred)
 
+    logging.info(f"len of labels: {len(labels)} and predictions: {len(pred)}")
     scores = {
         "avg_prec" : avg_prec, 
         "roc_auc":  roc_auc
@@ -57,10 +60,14 @@ def main(config_path, params_path):
 
     save_json(scores_json_path, scores)
 
-    precision, recall, prc_threshold = metrics.precision_recall_curve(labels, predictions)
+    precision, recall, prc_threshold = metrics.precision_recall_curve(labels, pred)
 
     nth_point = math.ceil(len(prc_threshold)/1000)
     prc_points = list(zip(precision, recall, prc_threshold))[::nth_point]
+    # prc_points = list(zip(precision, recall, prc_threshold))  # to get the log details 
+
+    logging.info(f"no. of prc points: {len(prc_points)}")
+    # logging.info(f"precision: {precision}, \nrecall: {recall}, \nprc_threshold: {prc_threshold}")  # to get the log details 
 
     prc_data = {
         "prc" :[
@@ -70,14 +77,17 @@ def main(config_path, params_path):
     }
     save_json(PRC_json_path, prc_data)
 
-    fpr, tpr, roc_threshold =metrics.roc_curve(labels, predictions)
-
+    fpr, tpr, roc_threshold =metrics.roc_curve(labels, pred)
+    roc_points = zip(fpr, tpr, roc_threshold)
     roc_data ={
         "roc": [
             {"fpr" : fp, "tpr": tp, "threshold": t} 
             for fp, tp, t in zip(fpr, tpr, roc_threshold)
         ]
     }
+    logging.info(f"no. of prc points: {len(list(roc_points))}")
+    # logging.info(f"fpr: {fpr}, \ntpr: {tpr}, \nroc_threshold: {roc_threshold}") # to get the log details 
+
     save_json(ROC_json_path, roc_data)    
 
 
